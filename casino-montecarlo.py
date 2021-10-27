@@ -81,24 +81,11 @@ if op_rul == 1:
                 lista.append(nr)
                 f.close()
            
-                
-
+        
                 lista_choice.append(cr)
                 contador = contador+1
                 
-                
-       """  print(lista)
-        print(lista_choice) """
-                
-
-
-           
-       
-       
-       
-       
-       
-       
+      
        
         print(" _______________________________")
         print("|       Resultado Ruleta        |")
