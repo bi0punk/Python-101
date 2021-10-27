@@ -75,17 +75,21 @@ if op_rul == 1:
         while contador != veces_a_lanzar:
                 nr = (randrange(0, 36)) # Numero al azar que entrega la ruleta
                 cr = (choice(["Rojo", "Negro"])) # Color al azar que entrega la ruleta
+                f = open ('numeros.txt','w')
+                f = open ('colores.txt', 'w')
+                f.write('')
                 lista.append(nr)
+                f.close()
+           
+                
+
                 lista_choice.append(cr)
                 contador = contador+1
                 
                 
-        print(lista)
-        print(lista_choice)
+       """  print(lista)
+        print(lista_choice) """
                 
-
-
-
 
 
            
