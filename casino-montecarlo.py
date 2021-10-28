@@ -26,7 +26,6 @@ mon_apuesta = int(input())
 #seleccion de colores rojo o negro
 
 print("""\n Ingrese colores para apostar
-
           1) Rojo
           2) Negro   \n""")
 
@@ -68,24 +67,36 @@ if op_rul == 1:
         print("Veces a lanzar")
         veces_a_lanzar = int(input())
 
-        contador = 0
+        contador = 1
         lista = []
         lista_choice = []
 
         while contador != veces_a_lanzar:
                 nr = (randrange(0, 36)) # Numero al azar que entrega la ruleta
                 cr = (choice(["Rojo", "Negro"])) # Color al azar que entrega la ruleta
-                f = open ('numeros.txt','w')
-                f = open ('colores.txt', 'w')
-                f.write('')
                 lista.append(nr)
-                f.close()
-           
-        
                 lista_choice.append(cr)
                 contador = contador+1
+        
+        
+
+        cadena_lista = [str(int) for int in lista]
+        
+        cadena_lista_choice = [str(int) for int in lista_choice]
+
+        str_of_ints = ",".join(string_ints)
+
+        numeros = open('numeros.txt', 'w')
+        numeros.write(lista)
+
+        color_c = open('numeros.txt', 'w')
+        color_c.write(lista_choice)
+
+
+        print(lista)
                 
       
+
        
         print(" _______________________________")
         print("|       Resultado Ruleta        |")
