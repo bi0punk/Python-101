@@ -80,17 +80,18 @@ if op_rul == 1:
         
         
 
-        cadena_lista = [str(int) for int in lista]
+        list_a_cadena = [str(int) for int in lista]
         
-        cadena_lista_choice = [str(int) for int in lista_choice]
+        list_choice_cadena = [str(int) for int in lista_choice]
 
-        str_of_ints = ",".join(string_ints)
+        coma_cadena = ",".join(list_a_cadena, list_choice_cadena)
+        coma_cadena_choice = ",".join(list_choice_cadena)
 
         numeros = open('numeros.txt', 'w')
-        numeros.write(lista)
+        numeros.write(coma_cadena)
 
         color_c = open('numeros.txt', 'w')
-        color_c.write(lista_choice)
+        color_c.write(coma_cadena_choice)
 
 
         print(lista)
