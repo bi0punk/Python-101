@@ -84,13 +84,13 @@ if op_rul == 1:
         
         list_choice_cadena = [str(int) for int in lista_choice]
 
-        coma_cadena = ",".join(list_a_cadena, list_choice_cadena)
-        coma_cadena_choice = ",".join(list_choice_cadena)
+        coma_cadena = ",".join(list_a_cadena)
+        coma_cadena_choice = ",".join(coma_cadena)
 
         numeros = open('numeros.txt', 'w')
         numeros.write(coma_cadena)
 
-        color_c = open('numeros.txt', 'w')
+        color_c = open('color.txt', 'w')
         color_c.write(coma_cadena_choice)
 
 
