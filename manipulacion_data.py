@@ -9,11 +9,7 @@ import pandas as pd
 fuente_dat = 'http://www.sismologia.cl/ultimos_sismos.html'
 page = requests.get(fuente_dat)
 sopa = bs4.BeautifulSoup(page.text, 'lxml')
-
-
 #obtenienod la tabla a partir del html
-
-
 tabla = sopa.find('table')
 
 cabezeras= []

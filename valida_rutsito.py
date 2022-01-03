@@ -1,3 +1,6 @@
+
+
+
 import sys
 from itertools import cycle
 def validarRut(rut):
@@ -17,7 +20,6 @@ def validarRut(rut):
 	else:
 		return False
 def main():
-
 	print(validarRut(sys.argv[0] ))
 if __name__=="__main__":
 	main()
