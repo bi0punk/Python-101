@@ -1,21 +1,10 @@
-
-
-
-    #importamos la libreria numpy
+#importamos la libreria numpy
 
 import numpy as np 
-
-
 
 #Pregunta 1
 
 #Crear tres matrices y evaluar si estan correctas o no.
-
-
-
-
-
-
 
 
     #creamos una funcion llamada 'es_cuadrada' y le pasamos el parametro matriz
@@ -58,9 +47,6 @@ def simetria(matriz):
                 sim=0
                 x=len(matriz)
                 break
-
-
-
 
     #Ciclo if si la variable 'sim' tiene el valor de True
     #imprime "La matriz"
