@@ -32,6 +32,6 @@ try:
     smtp_server.login(gmail_user, gmail_password)
     smtp_server.sendmail(sent_from, to, email_text)
     smtp_server.close()
-    print ("Email sent successfully!")
+    print ("Correo enviado exitosamente")
 except Exception as ex:
-    print ("Something went wrong….",ex)
+    print ("ERROR AL ENVIAR",ex)
