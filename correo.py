@@ -1,12 +1,22 @@
+
+
+
+#DESACTIVAR VERIFICACION EN DOS PASOS DE GOOGLE Y ACTIVAR EL ENVIO DE EMAILS DE APLICACIONES NO SEGURAS
+
+
+
 import smtplib
 
-gmail_user = 'enriquesuarez022@gmail.com'
-gmail_password = 'universo40'
+
+
+
+gmail_user = 'TU_CORREO'
+gmail_password = 'TU CONTRASEÑA'
 
 sent_from = gmail_user
-to = ['enriquesuarez022@gmail.com']
-subject = 'Lorem ipsum dolor sit amet'
-body = 'consectetur adipiscing elit'
+to = ['CORREOS O CORREO DE DESTINO']
+subject = 'PRUEBA CORREO ELECTRONICO'
+body = 'ESTE ES UN TEXTO DE PRUEBA'
 
 email_text = """\
 From: %s
