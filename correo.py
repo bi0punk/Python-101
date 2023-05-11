@@ -1,8 +1,3 @@
-
-
-
-#DESACTIVAR VERIFICACION EN DOS PASOS DE GOOGLE Y ACTIVAR EL ENVIO DE EMAILS DE APLICACIONES NO SEGURAS
-
 import smtplib
 
 gmail_user = 'TU_CORREO'
@@ -13,20 +8,20 @@ to = ['CORREOS O CORREO DE DESTINO']
 subject = 'PRUEBA CORREO ELECTRONICO'
 body = 'ESTE ES UN TEXTO DE PRUEBA'
 
-email_text = """\
-From: %s
-To: %s
-Subject: %s
+email_text = f"""\
+From: {sent_from}
+To: {", ".join(to)}
+Subject: {subject}
 
-%s
-""" % (sent_from, ", ".join(to), subject, body)
+{body}
+"""
 
 try:
-    smtp_server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    smtp_server.ehlo()
-    smtp_server.login(gmail_user, gmail_password)
-    smtp_server.sendmail(sent_from, to, email_text)
-    smtp_server.close()
-    print ("Correo enviado exitosamente")
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
+        smtp_server.login(gmail_user, gmail_password)
+        smtp_server.sendmail(sent_from, to, email_text)
+    print("Correo enviado exitosamente")
+except smtplib.SMTPAuthenticationError:
+    print("Error de autenticación: revise su usuario y contraseña")
 except Exception as ex:
-    print ("ERROR AL ENVIAR",ex)
+    print("Error al enviar correo:", ex)
