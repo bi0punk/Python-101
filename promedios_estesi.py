@@ -1,18 +1,17 @@
-# promedio ---->suma/cantidad
-#suma----> acumulador--->acu
-#cont ----> ----> cant
+class Promedio:
+    def __init__(self):
+        self.cant = 0
+        self.acu = 0
+    
+    def calcular_promedio(self):
+        while True:
+            nota = float(input("Nota: "))
+            if nota == -1:
+                break
+            self.cant += 1
+            self.acu += nota
+        promedio = self.acu / self.cant
+        print("Promedio: {:.2f}".format(promedio))
 
-cant = 0
-acu = 0
-
-while(True):
-	nota= float(input("Nota: "))
-	
-	if(nota == -1):
-		break
-		
-	cant = cant + 1
-	acu = acu + nota
-	
-promedio = acu / cant
-print("Promedio: "+str(promedio))
+promedio = Promedio()
+promedio.calcular_promedio()
