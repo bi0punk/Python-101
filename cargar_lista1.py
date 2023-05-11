@@ -1,12 +1,7 @@
-
-
-
-nalum=[]
-while(True):
-	nombal= (raw_input("Ingrese Nombre de Alumno: "))
-	nalum.append(nombal)
-	if(nombal == "stop"):
-		break
-print("Tamano de la lista: ")
-print(len(nalum)
-
+nalum = []
+while True:
+    nombal = input("Ingrese Nombre de Alumno: ")
+    if nombal.lower() == "stop":
+        break
+    nalum.append(nombal)
+print(f"Cantidad de alumnos registrados: {len(nalum)}")
