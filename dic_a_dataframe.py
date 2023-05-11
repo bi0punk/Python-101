@@ -1,20 +1,17 @@
-
-
-
 import pandas as pd
-clients = [{
-        "Personal_Data": [
-            {
-                "First_name": "Pedro",
-                "Last_name": "Aguilar",
-                "Phone": "+569888888",
-                "Address": "Fake street 396, NY",
-                "Email": "fake@fake.com",
-                "Account_id": "325452",
-                "VIP_FLG": "1",
-                "Shipping_Address": "Fake street 398, NY"
-            }
-        ],
+
+clients = [
+    {
+        "Personal_Data": {
+            "First_name": "Pedro",
+            "Last_name": "Aguilar",
+            "Phone": "+569888888",
+            "Address": "Fake street 396, NY",
+            "Email": "fake@fake.com",
+            "Account_id": "325452",
+            "VIP_FLG": "1",
+            "Shipping_Address": "Fake street 398, NY"
+        },
         "Order": [
             {
                 "OrderID": "12345",
@@ -53,75 +50,12 @@ clients = [{
                 ]
             }
         ]
-    }]
+    }
+]
 
-nuevo_diccionario={}
-
-for di in clients:
-    nuevo_diccionario[di['First_name']]={}
-    for k in di.keys():
-        if k =='First_name': continue
-        nuevo_diccionario[di['First_name'][k]]=di[k]
-
-print(nuevo_diccionario)
-
-""" df = pd.DataFrame([key for key in clients.keys()], columns=['Name'])
-df['First_name'] = [value['First_name'] for value in clients.values()]
-df['Last_name'] = [value['Last_name'] for value in clients.values()]
-df['Phone'] = [value['Phone'] for value in clients.values()]
-df['Address'] = [value['Address'] for value in clients.values()]
-df['Email'] = [value['Email'] for value in clients.values()]
-df['Acount_id'] = [value['Acount_id'] for value in clients.values()]
-df['VIP_FLG'] = [value['VIP_FLG'] for value in clients.values()]
-df['Shipping_Adress'] = [value['Shipping_Adress'] for value in clients.values()]
-print(df)
- """
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-""" clientes = {
-    "Waldon Astling": 1.83,
-    "Catherine MacTerlagh": 0.15,
-    "Gusty Wondraschek": 9.19,
-    "Arepico": 3.33,
-    "Lois Vaan": 1.28,
-    "Baird Eberts": 0.82,
-    "Amalia Flieg": 2.88,
-    "Leontine Wildbore": 9.44,
-    "Rikki Chasteney": 7.01,
-    "Augustine Papierz": 0.22,
-    "Maynord Lawrance": 0.33
-
-}
-
-
-df = pd.DataFrame([[key, clientes[key]] for key in clientes.keys()], columns=['Name', 'Amount'])
-print(df)
-
-
- """
+# Crear un DataFrame de pandas a partir de la lista de diccionarios 'clients'
+df = pd.DataFrame.from_records(
+    [
+        {
+            'First_name': client['Personal_Data']['First_name'],
+            'Last_name': client['Personal_Data']['Last_name'],
