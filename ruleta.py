@@ -1,20 +1,16 @@
-
 import random
 
-lista=[]
-print("verificando")
-for pos in range(0, 6):
-		lista.append(0)
-		
-print("Colocado bala en posicion")
+lista = [0] * 6
+print("Colocando bala en una posición...")
 
-pos=random.randrange(0, 5)
-lista[pos]=1
-bandera=True
-while bandera:
-	a=int(input("Para dispara seleccione una posicion:  "))
-	if lista[a]==1:
-		bandera=False
-	else:
-		print("sigues vivo")
-print("usted esta... uc")
+pos = random.randint(0, 5)
+lista[pos] = 1
+
+while True:
+    a = int(input("Para disparar, seleccione una posición: "))
+    if lista[a] == 1:
+        print("¡BANG! Has perdido.")
+        break
+    else:
+        print("Sigues vivo.")
+print("Fin del juego.")
