@@ -1,20 +1,19 @@
 import random
 
-lista=[]
-print("verificando")
-for pos in range(0, 6):
-		lista.append(0)
-		
-print("Colocado bala en posicion")
+num_positions = 6
+positions = [0] * num_positions
 
-pos=random.randrange(0, 5)
-lista[pos]=1
-bandera=True
-while bandera:
-	a=int(input("Para dispara seleccione una posicion"))
-	if lista[a]==1:
-		bandera=False
-	else:
-		print("sigues vivo")
-print("usted esta... uc")
-	
+print("Verificando posiciones...")
+bullet_position = random.randint(0, num_positions - 1)
+positions[bullet_position] = 1
+
+while True:
+    shoot_position = int(input("Para disparar, seleccione una posición: "))
+    
+    if positions[shoot_position] == 1:
+        print("¡Bala encontrada! Usted está muerto.")
+        break
+    else:
+        print("Sigue vivo.")
+        
+print("Juego terminado.")
