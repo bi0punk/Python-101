@@ -1,134 +1,91 @@
 from tqdm import tqdm
-import time
+import random
 
 
+def obtener_color():
+    print("Ingrese colores para apostar")
+    print("1) Rojo")
+    print("2) Negro")
+    while True:
+        try:
+            col_apuesta = int(input())
+            if col_apuesta == 1:
+                return 'Rojo'
+            elif col_apuesta == 2:
+                return 'Negro'
+            else:
+                print("Ingrese una opción válida")
+        except ValueError:
+            print("Ingrese una opción válida")
 
 
-
-from random import randrange, choice
-
-
-print (" #####################")
-print (" # RULETA MONTECARLO #")
-print (" #####################")
-
-
-print("Ingrese el monto a apostar \n")
-
-#guardamos ingreso de valor en  variable din_apuesta, tipo entero
-
-mon_apuesta = int(input())
+def obtener_numero():
+    while True:
+        try:
+            num_rul_jug = int(input("Ingrese un número entre 0 y 36: "))
+            if num_rul_jug >= 0 and num_rul_jug <= 36:
+                return num_rul_jug
+            else:
+                print("Ingrese un número dentro del rango")
+        except ValueError:
+            print("Ingrese un número válido")
 
 
-""" print("\n Usted a apostado: " +str(din_apuesta)) """
-""" print(din_apuesta) """
+def lanzar_ruleta(veces_a_lanzar):
+    lista = []
+    lista_choice = []
 
-#seleccion de colores rojo o negro
+    for _ in tqdm(range(veces_a_lanzar)):
+        nr = random.randint(0, 36)  # Número al azar que entrega la ruleta
+        cr = random.choice(["Rojo", "Negro"])  # Color al azar que entrega la ruleta
+        lista.append(nr)
+        lista_choice.append(cr)
 
-print("""\n Ingrese colores para apostar
-          1) Rojo
-          2) Negro   \n""")
-
-#ciclo if para determinar colores
-
-col_apuesta = int(input())
-if col_apuesta == 1:
-        color = 'Rojo'  #asignamos una variable tipo string para mostrar en resumen
-
-if col_apuesta ==2:
-        color = 'Negro'
-
-bandera = True
-while bandera:
-        print("\n Ingrese un numero ente 0 y 36 \n")
-        num_rul_jug=int(input())
-        if num_rul_jug > 36:
-                print("Ingrese un numero dentro del rango")
-        else:
-                bandera = False
- 
-print(" _____________________________")
-print("|    Resumen Apuesta ")
-print("|-----------------------------|")
-print("|  Monto: " +str(mon_apuesta))
-print("|  Color: " +str(color))
-print("|  Numero: "+str(num_rul_jug))
-print("|_____________________________|")
+    return lista, lista_choice
 
 
-#logica de premios
-
-print("\n Presione 1 Para lanzar Ruleta")
-op_rul = int(input())
-
-if op_rul == 1:
-        
-
-        print("Veces a lanzar")
-        veces_a_lanzar = int(input())
-
-        contador = 1
-        lista = []
-        lista_choice = []
-
-        while contador != veces_a_lanzar:
-                nr = (randrange(0, 36)) # Numero al azar que entrega la ruleta
-                cr = (choice(["Rojo", "Negro"])) # Color al azar que entrega la ruleta
-                lista.append(nr)
-                lista_choice.append(cr)
-                contador = contador+1
-        
-        
-
-        list_a_cadena = [str(int) for int in lista]
-        
-        list_choice_cadena = [str(int) for int in lista_choice]
-
-        coma_cadena = ",".join(list_a_cadena)
-        coma_cadena_choice = ",".join(coma_cadena)
-
-        numeros = open('numeros.txt', 'w')
-        numeros.write(coma_cadena)
-
-        color_c = open('color.txt', 'w')
-        color_c.write(coma_cadena_choice)
+def resumen_apuesta(mon_apuesta, color, num_rul_jug):
+    print("Resumen Apuesta")
+    print("Monto:", mon_apuesta)
+    print("Color:", color)
+    print("Número:", num_rul_jug)
 
 
-        print(lista)
-                
-      
-
-       
-        print(" _______________________________")
-        print("|       Resultado Ruleta        |")
-        print("|-------------------------------|")
-        print("|     Color: " +str(cr))
-        print("|     Numero: " +str(nr))
-        print("|_______________________________|")
+def resultado_ruleta(nr, cr):
+    print("Resultado Ruleta")
+    print("Color:", cr)
+    print("Número:", nr)
 
 
-        if nr != num_rul_jug and color == cr:  # Ganando el 20% del dinero apostado
-                ganancia = mon_apuesta*20/100
+def calcular_ganancia(mon_apuesta, nr, color, cr):
+    if nr != num_rul_jug and color == cr:  # Ganando el 20% del dinero apostado
+        ganancia = mon_apuesta * 0.2
+        print("Usted ha ganado:", ganancia)
 
-                print(" ____________________________")
-                print("| Usted ha ganado: " +str(ganancia))
-                print("|____________________________|")
+    elif nr == num_rul_jug and color != cr:  # Ganando el 100% del dinero apostado
+        ganancia = mon_apuesta * 2
+        print("Usted ha ganado:", ganancia)
+
+    elif nr == num_rul_jug and color == cr:  # Ganando el 200% del dinero apostado
+        ganancia = mon_apuesta * 4
+        print("Usted ha ganado:", ganancia)
+
+    else:
+        print("Mala suerte, no ganó nada")
 
 
-        if nr == num_rul_jug and color != cr:  # Ganando el 100% del dinero apostado
-                ganancia = mon_apuesta*2
-                print(" ________________________")
-                print("|  Usted ha ganado: " +str(ganancia))
-                print("| _______________________|")
+if __name__ == "__main__":
+    print("#####################")
+    print("# RULETA MONTECARLO #")
+    print("#####################")
 
-        if nr == num_rul_jug and color == cr: # ganando el 200% de dinero apostado
-                ganancia = mon_apuesta*4
-                print(" __________________________")
-                print("|  Usted ha ganado: " +str(ganancia))
-                print("|__________________________|")
+    mon_apuesta = int(input("Ingrese el monto a apostar: "))
+    color = obtener_color()
+    num_rul_jug = obtener_numero()
 
-        if nr != num_rul_jug and color != cr:
-                gananancia = 0
-                print(" _______________________________")
-                print("|   Mala suerte, no gano nada   |")
-                print("|_______________________________|")
+    resumen_apuesta(mon_apuesta, color, num_rul_jug)
+
+    op_rul = input("Presione Enter para lanzar Ruleta: ")
+
+    if op_rul == "":
+        veces_a_lanzar = int(input("Veces a lanzar")
