@@ -1,17 +1,13 @@
-
-
-import urllib.request, json 
-import pandas as pd
+import urllib.request
 import json
-from bs4 import BeautifulSoup
+import pandas as pd
 import requests
 
+url = 'https://farmanet.minsal.cl/index.php/ws/getLocalesTurnos'
+resp = requests.get(url)
+data = resp.json()
 
-resp = requests.get('https://farmanet.minsal.cl/index.php/ws/getLocalesTurnos')
-txt = resp.json()
-df = pd.DataFrame(txt)
-""" df.to_csv('farma.csv') """
+df = pd.DataFrame(data)
 farma = df.head(70)[["localidad_nombre", "local_nombre", "local_direccion"]]
-vall = df.iloc[22, [5,6,8,11]] # representa [filas,columnas]
+vall = df.loc[22, ["localidad_nombre", "local_nombre", "local_direccion"]]
 print(vall)
-
